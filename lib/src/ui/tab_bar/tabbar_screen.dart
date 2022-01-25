@@ -53,6 +53,7 @@ class _TabBarScreenState extends State<TabBarScreen> {
             HomeScreen(),
             SettingScreen(),
             ProductScreen(),
+
           ],
         ),
       ),
