@@ -21,7 +21,6 @@ class _TabBarScreenState extends State<TabBarScreen> {
             indicator: BoxDecoration(
               color: Colors.red,
               borderRadius: BorderRadius.circular(12),
-
             ),
             tabs: [
               Container(
@@ -53,7 +52,6 @@ class _TabBarScreenState extends State<TabBarScreen> {
             HomeScreen(),
             SettingScreen(),
             ProductScreen(),
-
           ],
         ),
       ),
