@@ -10,6 +10,7 @@ class AppTheme {
   static const Color dark = Color(0xFF121F3E);
   static const Color milk = Color(0xFFF5F6FF);
   static const Color blue = Color(0xFF326CF8);
+  static const Color black = Color(0xFF000000);
 
   static const Color shimmerBaseColor = Color(0xE0E0E0FF);
   static const Color shimmerHighColor = Color(0xF5F5F5FF);
