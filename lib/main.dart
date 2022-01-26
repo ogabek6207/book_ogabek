@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         platform: TargetPlatform.iOS,
         primarySwatch: Colors.blue,
       ),
-      home:  const TabBarScreen(),
+      home:  const MainScreen(),
     );
   }
 }
