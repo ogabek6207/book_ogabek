@@ -21,15 +21,33 @@ class _BookPagesScreenState extends State<BookPagesScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
-            height: 472 * h,
-            width: MediaQuery.of(context).size.width,
-            child: ClipRRect(
-              child: Image.asset(
-                "assets/images/book.png",
-                fit: BoxFit.cover,
+          Stack(
+            children: [
+              SizedBox(
+                height: 472 * h,
+                width: MediaQuery.of(context).size.width,
+                child: ClipRRect(
+                  child: Image.asset(
+                    "assets/images/book.png",
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  margin: EdgeInsets.only(
+                    top: 48 * h,
+                    left: 20 * w,
+                  ),
+                  height: 54 * o,
+                  width: 54 * o,
+                  child: SvgPicture.asset("assets/icons/arrow_left.svg"),
+                ),
+              ),
+            ],
           ),
           SizedBox(
             height: 24 * h,

@@ -1,6 +1,6 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
 import 'package:book_ogabek/src/app_theme/app_theme.dart';
-import 'package:book_ogabek/src/ui/company/news_screen.dart';
+import 'package:book_ogabek/src/ui/home/news_screen.dart';
 import 'package:book_ogabek/src/ui/home/genres_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
