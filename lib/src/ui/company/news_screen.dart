@@ -2,7 +2,6 @@ import 'package:book_ogabek/src/Utils/utils.dart';
 import 'package:book_ogabek/src/app_theme/app_theme.dart';
 import 'package:book_ogabek/src/ui/widget/product_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen({
@@ -35,11 +34,11 @@ class _NewsScreenState extends State<NewsScreen> {
               child: Row(
                 children: [
                   SizedBox(width: 24 * w),
-                  Expanded(
+                  const Expanded(
                     child: ProductWidget(),
                   ),
                   SizedBox(width: 16 * w),
-                  Expanded(
+                  const Expanded(
                     child: ProductWidget(),
                   ),
                   SizedBox(width: 24 * w),

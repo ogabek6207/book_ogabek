@@ -111,7 +111,7 @@ class _TabBarScreenState extends State<TabBarScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 46*h,
+                          height: 46 * h,
                           child: Center(
                             child: Text(
                               "Все книги",
@@ -127,7 +127,7 @@ class _TabBarScreenState extends State<TabBarScreen> {
                         ),
                       ],
                     ),
-                    height: 50*h,
+                    height: 50 * h,
                     padding: EdgeInsets.all(2 * o),
                   ),
                 ],

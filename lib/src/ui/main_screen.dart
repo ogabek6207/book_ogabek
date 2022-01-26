@@ -1,9 +1,10 @@
 import 'package:book_ogabek/src/app_theme/app_theme.dart';
 import 'package:book_ogabek/src/ui/save_book/save_book_screen.dart';
-import 'package:book_ogabek/src/ui/setting/setting_screen.dart';
 import 'package:book_ogabek/src/ui/tab_bar/tabbar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'company/news_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   List<Widget> data = [
     const TabBarScreen(),
     const SaveBookScreen(),
-    const SettingScreen(),
+    const SaveBookScreen(),
   ];
 
   @override
