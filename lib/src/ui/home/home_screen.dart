@@ -15,66 +15,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
-
-
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
     return Scaffold(
-      backgroundColor: AppTheme.milk,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppTheme.milk,
-        title: GestureDetector(
-          onTap: () {
-
-          },
-          child: Container(
-            height: 50 * h,
-            margin: EdgeInsets.only(
-              left: 8 * w,
-              right: 8 * w,
-            ),
-            decoration: BoxDecoration(
-              color: AppTheme.white,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 12 * w,
-                ),
-                SvgPicture.asset(
-                  "assets/icons/search7.svg",
-                ),
-                SizedBox(
-                  width: 8 * w,
-                ),
-                Column(
-                  children: [
-                    const Spacer(),
-                    Text(
-                      "to_start_searching",
-                      style: TextStyle(
-                        color: AppTheme.grey,
-                        fontStyle: FontStyle.normal,
-                        fontFamily: AppTheme.fontFamilyManrope,
-                        height: 22 / 16,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16 * o,
-                      ),
-                    ),
-                    const Spacer(),
-                  ],
-                ),
-                const Spacer()
-              ],
-            ),
-          ),
-        ),
-      ),
+      backgroundColor: AppTheme.white,
       body: Column(
         children: [
           Expanded(
@@ -94,10 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         SizedBox(
                           height: 50 * h,
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
+                          width: MediaQuery.of(context).size.width,
                           child: Row(
                             children: [
                               SizedBox(
@@ -105,72 +49,52 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               SizedBox(
                                 width: 240,
-                                child: Column(
-                                  crossAxisAlignment:
-                                  CrossAxisAlignment.start,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    const Spacer(),
                                     Text(
-                                      "jjjbbjbjh",
+                                      "Психология",
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 1,
                                       style: TextStyle(
-                                        color: AppTheme.primary,
-                                        fontFamily:
-                                        AppTheme.fontFamilyManrope,
-                                        height: 25 / 18,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18 * o,
+                                        color: AppTheme.black,
+                                        fontFamily: AppTheme.fontFamilyManrope,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 16 * o,
                                       ),
                                     ),
-                                    const Spacer(),
+                                    SizedBox(
+                                      width: 4 * w,
+                                    ),
+                                    SvgPicture.asset(
+                                      "assets/icons/arrow_right.svg",
+                                      color: AppTheme.black,
+                                      height: 18 * h,
+                                      width: 11 * w,
+                                    )
                                   ],
                                 ),
-                              ),
-                              const Spacer(),
-                              Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
-                                children: [
-                                  const SizedBox(
-                                    height: 4,
-                                  ),
-                                  const Spacer(),
-                                  Text(
-                                    "all",
-                                    style: TextStyle(
-                                        fontSize: 14 * o,
-                                        height: 19 / 14 * h,
-                                        fontFamily:
-                                        AppTheme.fontFamilyManrope,
-                                        color: AppTheme.grey,
-                                        fontWeight: FontWeight.w600,
-                                        fontStyle: FontStyle.normal),
-                                  ),
-                                  const Spacer(),
-                                ],
-                              ),
-                              SizedBox(
-                                width: 24 * w,
                               ),
                             ],
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.only(
-                            top: 12 * h,
-                            bottom: 24 * h,
+                            top: 24 * h,
+                            bottom: 32 * h,
                           ),
-                          height: 208 * h,
+                          height: 266 * h,
                           child: ListView.builder(
                             padding: EdgeInsets.only(left: 24 * w),
                             scrollDirection: Axis.horizontal,
                             itemCount: 10,
                             itemBuilder: (context, position) {
                               return ItemWidget(
-                                title: "jhhjjh",
+                                title: "Джен Синсеро",
                                 name:
-                                "jhhjjh",
+                                    "НИ СЫ. Будь уверен в своих силах и не поз...",
+
                                 image: "",
                               );
                             },
@@ -187,6 +111,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-
 }

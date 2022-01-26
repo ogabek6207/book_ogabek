@@ -24,7 +24,7 @@ class _ProductWidgetState extends State<ProductWidget> {
         color: AppTheme.white,
         borderRadius: BorderRadius.circular(8 * o),
       ),
-      height: 170 * h,
+      height: 190 * h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,8 +39,8 @@ class _ProductWidgetState extends State<ProductWidget> {
                   itemCount: 3,
                   itemBuilder: (context, index) {
                     return Container(
-                      height: 190,
-                      width: 144,
+                      height: 274,
+                      width: 190,
                       decoration: BoxDecoration(
                         color: AppTheme.milk,
                         borderRadius: BorderRadius.circular(10),
@@ -50,7 +50,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                 ),
               ),
               errorWidget: (context, url, error) => const Icon(Icons.error),
-              height: 110 * o,
+              height: 190 * o,
               width: (MediaQuery.of(context).size.width - 64) / 2,
               fit: BoxFit.cover,
             ),
@@ -63,7 +63,23 @@ class _ProductWidgetState extends State<ProductWidget> {
               left: 16 * w,
             ),
             child: Text(
-              "guigyugygy",
+              "Джен Синсеро",
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontFamily: AppTheme.fontFamilyManrope,
+                color: const Color(0xFF1C1C1E),
+                fontWeight: FontWeight.bold,
+                fontSize: 13 * o,
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              left: 16 * w,
+            ),
+            child: Text(
+              "Джен Синсеро",
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(

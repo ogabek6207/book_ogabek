@@ -20,7 +20,7 @@ class _MainScreenState extends State<MainScreen> {
 
   List<Widget> data = [
     const HomeScreen(),
-    const ProductScreen(),
+    const NewsScreen(),
     const SettingScreen(),
   ];
 

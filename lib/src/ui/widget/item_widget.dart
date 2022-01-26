@@ -34,7 +34,7 @@ class _ItemWidgetState extends State<ItemWidget> {
       margin: EdgeInsets.only(
         right: 16 * w,
       ),
-      width: 140 * w,
+      width: 182 * w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -48,8 +48,8 @@ class _ItemWidgetState extends State<ItemWidget> {
                 borderRadius: BorderRadius.circular(8 * o),
                 child: CachedNetworkImage(
                   imageUrl: widget.image,
-                  height: 128 * h,
-                  width: 140 * w,
+                  height: 182 * h,
+                  width: 182 * w,
                   fit: BoxFit.cover,
                   placeholder: (context, url) =>
                       const CircularProgressIndicator.adaptive(),
@@ -57,19 +57,16 @@ class _ItemWidgetState extends State<ItemWidget> {
                 ),
               ),
             ),
-            width: 144 * w,
-            height: 128 * h,
-          ),
-          SizedBox(
-            height: 12 * h,
+            width: 182 * w,
+            height: 182 * h,
           ),
           Container(
-            margin: EdgeInsets.only(left: 16 * w, right: 16 * w),
+            margin: EdgeInsets.only(right: 16 * w),
             child: widget.title.isEmpty
                 ? Shimmer.fromColors(
                     child: Container(
-                      width: 70 * w,
-                      height: 16 * h,
+                      width: 101 * w,
+                      height: 18 * h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
                         color: AppTheme.white,
@@ -84,12 +81,10 @@ class _ItemWidgetState extends State<ItemWidget> {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontStyle: FontStyle.normal,
-                      overflow: TextOverflow.ellipsis,
-                      height: 4 / 3 * h,
                       fontFamily: AppTheme.fontFamilyManrope,
-                      color: AppTheme.grey,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 12 * o,
+                      color: AppTheme.black6A,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14 * o,
                     ),
                   ),
           ),
@@ -98,8 +93,8 @@ class _ItemWidgetState extends State<ItemWidget> {
             child: widget.name.isEmpty
                 ? Shimmer.fromColors(
                     child: Container(
-                      height: 20,
-                      width: 80,
+                      height: 48,
+                      width: 182,
                       decoration: BoxDecoration(
                         color: AppTheme.milk,
                         borderRadius: BorderRadius.circular(4),
@@ -115,16 +110,13 @@ class _ItemWidgetState extends State<ItemWidget> {
                       fontStyle: FontStyle.normal,
                       fontFamily: AppTheme.fontFamilyManrope,
                       overflow: TextOverflow.ellipsis,
-                      color: AppTheme.dark,
-                      fontSize: 14 * o,
-                      height: 19 / 14 * h,
+                      color: AppTheme.black,
+                      fontSize: 16 * o,
+                      height: 1.5,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-            margin: EdgeInsets.only(
-              left: 16 * w,
-              right: 16 * w,
-            ),
+            margin: EdgeInsets.only(),
           ),
         ],
       ),

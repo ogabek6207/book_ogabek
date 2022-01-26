@@ -1,7 +1,8 @@
 import 'dart:io';
-
 import 'package:book_ogabek/src/ui/book_pages/book_pages_screen.dart';
+import 'package:book_ogabek/src/ui/tab_bar/tabbar_screen.dart';
 import 'package:flutter/material.dart';
+
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
@@ -10,6 +11,7 @@ class MyHttpOverrides extends HttpOverrides {
           (X509Certificate cert, String host, int port) => true;
   }
 }
+
 void main() {
   runApp(const MyApp());
 }
@@ -19,17 +21,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-platform: TargetPlatform.iOS,
+        platform: TargetPlatform.iOS,
         primarySwatch: Colors.blue,
       ),
-      home:  const BookPagesScreen(),
+      home: const TabBarScreen(),
     );
   }
 }
-
-
