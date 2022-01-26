@@ -21,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
 
   List<Widget> data = [
     const TabBarScreen(),
-    const NewsScreen(),
+    const (),
     const SettingScreen(),
   ];
 

@@ -89,15 +89,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: EdgeInsets.only(left: 24 * w),
                             scrollDirection: Axis.horizontal,
                             itemCount: 10,
-                            itemBuilder: (context, position) {
-                              return ItemWidget(
-                                title: "Джен Синсеро",
-                                name:
-                                    "НИ СЫ. Будь уверен в своих силах и не поз...",
-
-                                image: "",
-                              );
-                            },
+                            itemBuilder: (context, position) =>
+                                const ItemWidget(
+                              title: "Джен Синсеро",
+                              name:
+                                  "НИ СЫ. Будь уверен в своих силах и не поз...",
+                              image: "",
+                            ),
                           ),
                         ),
                       ],
