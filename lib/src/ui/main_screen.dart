@@ -5,9 +5,6 @@ import 'package:book_ogabek/src/ui/tab_bar/tabbar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'company/news_screen.dart';
-import 'home/genres_screen.dart';
-
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -22,11 +19,10 @@ class _MainScreenState extends State<MainScreen> {
 
   List<Widget> data = [
     const TabBarScreen(),
-     SaveBookScreen(),
+    const SaveBookScreen(),
     const SettingScreen(),
   ];
 
-  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,12 +35,7 @@ class _MainScreenState extends State<MainScreen> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        unselectedLabelStyle: const TextStyle(
-          color: Colors.red,
-          fontSize: 14,
-          fontWeight: FontWeight.normal,
-        ),
-        selectedItemColor: AppTheme.purple,
+        selectedItemColor: AppTheme.orange,
         items: [
           BottomNavigationBarItem(
             icon: _selectedIndex == 0
@@ -56,7 +47,6 @@ class _MainScreenState extends State<MainScreen> {
             icon: _selectedIndex == 1
                 ? SvgPicture.asset(
                     "assets/icons/player.svg",
-
                   )
                 : SvgPicture.asset(
                     "assets/icons/player1.svg",
@@ -67,7 +57,6 @@ class _MainScreenState extends State<MainScreen> {
             icon: _selectedIndex == 2
                 ? SvgPicture.asset(
                     "assets/icons/my_books.svg",
-
                   )
                 : SvgPicture.asset(
                     "assets/icons/my_books1.svg",
