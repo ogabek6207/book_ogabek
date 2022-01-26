@@ -1,5 +1,6 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
 import 'package:book_ogabek/src/app_theme/app_theme.dart';
+import 'package:book_ogabek/src/dialog/bottom_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -107,40 +108,45 @@ class _BookPagesScreenState extends State<BookPagesScreen> {
           SizedBox(
             height: 24 * h,
           ),
-          Container(
-            height: 24 * h,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(horizontal: 16 * w),
-            child: Row(
-              children: [
-                SvgPicture.asset(
-                  "assets/icons/more.svg",
-                ),
-                SizedBox(
-                  width: 8 * w,
-                ),
-                Text(
-                  "Содержание",
-                  style: TextStyle(
-                    fontFamily: AppTheme.fontFamilyManrope,
-                    color: AppTheme.black6A,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16 * o,
+          GestureDetector(
+            onTap: (){
+            BottomDialog.showGalleryDialog(context);
+            },
+            child: Container(
+              height: 24 * h,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 16 * w),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    "assets/icons/more.svg",
                   ),
-                ),
-                const Spacer(),
-                Text(
-                  "Длительность: 06:29:08",
-                  style: TextStyle(
-                    fontFamily: AppTheme.fontFamilyManrope,
-                    color: AppTheme.black9E,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16 * o,
+                  SizedBox(
+                    width: 8 * w,
                   ),
-                ),
-              ],
+                  Text(
+                    "Содержание",
+                    style: TextStyle(
+                      fontFamily: AppTheme.fontFamilyManrope,
+                      color: AppTheme.black6A,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16 * o,
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    "Длительность: 06:29:08",
+                    style: TextStyle(
+                      fontFamily: AppTheme.fontFamilyManrope,
+                      color: AppTheme.black9E,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16 * o,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Container(
