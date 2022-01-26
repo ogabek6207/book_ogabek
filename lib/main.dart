@@ -1,7 +1,5 @@
 import 'dart:io';
-import 'package:book_ogabek/src/ui/book_pages/book_pages_screen.dart';
 import 'package:book_ogabek/src/ui/main_screen.dart';
-import 'package:book_ogabek/src/ui/tab_bar/tabbar_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyHttpOverrides extends HttpOverrides {
@@ -29,7 +27,7 @@ class MyApp extends StatelessWidget {
         platform: TargetPlatform.iOS,
         primarySwatch: Colors.blue,
       ),
-      home:  const MainScreen(),
+      home: const MainScreen(),
     );
   }
 }
