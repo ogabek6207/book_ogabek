@@ -1,7 +1,7 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
 import 'package:book_ogabek/src/app_theme/app_theme.dart';
-import 'package:book_ogabek/src/ui/company/company_screen.dart';
-import 'package:book_ogabek/src/ui/home/home_screen.dart';
+import 'package:book_ogabek/src/ui/company/news_screen.dart';
+import 'package:book_ogabek/src/ui/home/genres_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -71,7 +71,8 @@ class _TabBarScreenState extends State<TabBarScreen> {
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: TabBar(
-                      unselectedLabelStyle: TextStyle(color: AppTheme.milk),
+                      unselectedLabelStyle:
+                          const TextStyle(color: AppTheme.milk),
                       indicatorColor: AppTheme.orange,
                       unselectedLabelColor: AppTheme.black6A,
                       indicator: BoxDecoration(
@@ -80,7 +81,7 @@ class _TabBarScreenState extends State<TabBarScreen> {
                       ),
                       tabs: [
                         SizedBox(
-                          height: 46,
+                          height: 46 * h,
                           child: Center(
                             child: Text(
                               "Новинки",
@@ -110,7 +111,7 @@ class _TabBarScreenState extends State<TabBarScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 46,
+                          height: 46*h,
                           child: Center(
                             child: Text(
                               "Все книги",
@@ -126,7 +127,7 @@ class _TabBarScreenState extends State<TabBarScreen> {
                         ),
                       ],
                     ),
-                    height: 50,
+                    height: 50*h,
                     padding: EdgeInsets.all(2 * o),
                   ),
                 ],
@@ -137,18 +138,20 @@ class _TabBarScreenState extends State<TabBarScreen> {
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height,
-              child: TabBarView(children: [
-                const NewsScreen(),
-                const HomeScreen(),
-                Padding(
-                  padding: EdgeInsets.all(1),
-                  child: Container(
-                    height: 100,
-                    width: 100,
-                    color: AppTheme.black,
+              child: TabBarView(
+                children: [
+                  const NewsScreen(),
+                  const HomeScreen(),
+                  Padding(
+                    padding: EdgeInsets.all(0 * o),
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      color: AppTheme.black,
+                    ),
                   ),
-                ),
-              ]),
+                ],
+              ),
             ),
           ],
         ),

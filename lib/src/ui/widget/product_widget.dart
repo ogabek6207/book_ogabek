@@ -24,7 +24,7 @@ class _ProductWidgetState extends State<ProductWidget> {
         color: AppTheme.white,
         borderRadius: BorderRadius.circular(8 * o),
       ),
-      height: 190 * h,
+      height: 274 * h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,7 +39,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                   itemCount: 3,
                   itemBuilder: (context, index) {
                     return Container(
-                      height: 274,
+                      height: 190,
                       width: 190,
                       decoration: BoxDecoration(
                         color: AppTheme.milk,
@@ -51,26 +51,23 @@ class _ProductWidgetState extends State<ProductWidget> {
               ),
               errorWidget: (context, url, error) => const Icon(Icons.error),
               height: 190 * o,
-              width: (MediaQuery.of(context).size.width - 64) / 2,
+              width: 190 * o,
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(
-            height: 12 * h,
-          ),
+
           Container(
             margin: EdgeInsets.only(
               left: 16 * w,
             ),
             child: Text(
               "Джен Синсеро",
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
               style: TextStyle(
+                fontStyle: FontStyle.normal,
                 fontFamily: AppTheme.fontFamilyManrope,
-                color: const Color(0xFF1C1C1E),
-                fontWeight: FontWeight.bold,
-                fontSize: 13 * o,
+                color: AppTheme.black6A,
+                fontWeight: FontWeight.w600,
+                fontSize: 14 * o,
               ),
             ),
           ),
@@ -79,14 +76,16 @@ class _ProductWidgetState extends State<ProductWidget> {
               left: 16 * w,
             ),
             child: Text(
-              "Джен Синсеро",
+              "НИ СЫ. Будь уверен в своих силах и не позв...",
               maxLines: 2,
-              overflow: TextOverflow.ellipsis,
               style: TextStyle(
+                fontStyle: FontStyle.normal,
                 fontFamily: AppTheme.fontFamilyManrope,
-                color: const Color(0xFF1C1C1E),
-                fontWeight: FontWeight.bold,
-                fontSize: 13 * o,
+                overflow: TextOverflow.ellipsis,
+                color: AppTheme.black,
+                fontSize: 16 * o,
+                height: 1.5,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ),

@@ -23,6 +23,7 @@ class _NewsScreenState extends State<NewsScreen> {
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
     return Scaffold(
+      backgroundColor: AppTheme.white,
       body: ListView.builder(
           padding: EdgeInsets.only(top: 16 * h),
           itemCount: (10 + 1) ~/ 2,
