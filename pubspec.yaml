@@ -17,6 +17,7 @@ dependencies:
   flutter_svg: ^0.23.0+1
   shimmer: ^2.0.0
   cached_network_image: ^3.2.0
+  just_audio: ^0.9.18
 
 
 
