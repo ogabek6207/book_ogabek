@@ -1,5 +1,6 @@
-import 'dart:io';
+import 'package:book_ogabek/src/ui/book_pages/book_pages_screen.dart';
 import 'package:book_ogabek/src/ui/main_screen.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,10 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      // theme: ThemeData(
-      //   platform: TargetPlatform.iOS,
-      //   primarySwatch: Colors.blue,
-      // ),
+      theme: ThemeData(
+        platform: TargetPlatform.iOS,
+        primarySwatch: Colors.blue,
+      ),
       home: const MainScreen(),
     );
   }

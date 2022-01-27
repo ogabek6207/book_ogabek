@@ -1,4 +1,5 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
+import 'package:book_ogabek/src/ui/book_pages/book_pages_screen.dart';
 import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:book_ogabek/src/ui/menu/player/player_screen.dart';
 import 'package:book_ogabek/src/ui/widget/product_widget.dart';
@@ -41,7 +42,7 @@ class _NewsScreenState extends State<NewsScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {
-                              return const PlayerScreen();
+                              return const BookPagesScreen();
                             }),
                           );
                         },

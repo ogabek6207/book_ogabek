@@ -1,4 +1,5 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
+import 'package:book_ogabek/src/ui/menu/my_books/search_book_screen.dart';
 import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:book_ogabek/src/ui/widget/product_widget.dart';
 import 'package:flutter/material.dart';
@@ -36,35 +37,47 @@ class _MyBooksScreenState extends State<MyBooksScreen> {
           SizedBox(
             height: 32 * h,
           ),
-          Container(
-            padding: EdgeInsets.only(left: 19 * w),
-            height: 50 * h,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(horizontal: 16 * w),
-            decoration: BoxDecoration(
-              color: AppTheme.milk,
-              borderRadius: BorderRadius.circular(8 * o),
-            ),
-            child: Row(
-              children: [
-                SvgPicture.asset(
-                  "assets/icons/search.svg",
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SearchBookScreen();
+                  },
                 ),
-                SizedBox(
-                  width: 8 * w,
-                ),
-                Text(
-                  "Поиск по моим книгам",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: AppTheme.black9E,
-                    fontSize: 16 * o,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.normal,
-                    fontFamily: AppTheme.fontFamilyManrope,
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.only(left: 19 * w),
+              height: 50 * h,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 16 * w),
+              decoration: BoxDecoration(
+                color: AppTheme.milk,
+                borderRadius: BorderRadius.circular(8 * o),
+              ),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    "assets/icons/search.svg",
                   ),
-                ),
-              ],
+                  SizedBox(
+                    width: 8 * w,
+                  ),
+                  Text(
+                    "Поиск по моим книгам",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: AppTheme.black9E,
+                      fontSize: 16 * o,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.normal,
+                      fontFamily: AppTheme.fontFamilyManrope,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(

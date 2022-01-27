@@ -2,6 +2,7 @@ import 'package:book_ogabek/src/Utils/utils.dart';
 import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import 'items/all_books.dart';
 import 'items/genres_screen.dart';
 import 'items/news_screen.dart';
@@ -71,7 +72,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   Container(
                     decoration: BoxDecoration(
                       color: AppTheme.milk,
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                     child: TabBar(
                       unselectedLabelStyle:
