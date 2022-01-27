@@ -64,7 +64,7 @@ class _BookPagesScreenState extends State<BookPagesScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                   child: Text(
                     "НИ СЫ. Будь уверен в своих силах и не позволяй сомнениям мешать двигаться тебе вперед",
                     style: TextStyle(

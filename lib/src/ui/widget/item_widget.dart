@@ -88,7 +88,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                     ),
                   ),
           ),
-          Container(
+          SizedBox(
             height: 48,
             child: widget.name.isEmpty
                 ? Shimmer.fromColors(
@@ -116,7 +116,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-            margin: EdgeInsets.only(),
+
           ),
         ],
       ),

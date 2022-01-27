@@ -1,7 +1,6 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
 import 'package:book_ogabek/src/app_theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);

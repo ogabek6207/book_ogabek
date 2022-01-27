@@ -60,7 +60,7 @@ class BottomDialog {
                 ),
                 height: 74 * h,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppTheme.white,
 
 
@@ -106,7 +106,7 @@ class BottomDialog {
                 ),
                 height: 74 * h,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppTheme.white,
 
 
@@ -152,7 +152,7 @@ class BottomDialog {
                 ),
                 height: 74 * h,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppTheme.white,
 
 
@@ -198,7 +198,7 @@ class BottomDialog {
                 ),
                 height: 74 * h,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppTheme.white,
 
 
@@ -244,7 +244,7 @@ class BottomDialog {
                 ),
                 height: 74 * h,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppTheme.white,
 
 
@@ -290,7 +290,7 @@ class BottomDialog {
                 ),
                 height: 74 * h,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppTheme.white,
 
 
