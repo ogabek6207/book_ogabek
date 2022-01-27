@@ -2,6 +2,7 @@ import 'package:book_ogabek/src/Utils/utils.dart';
 import 'package:book_ogabek/src/app_theme/app_theme.dart';
 import 'package:book_ogabek/src/ui/home/news_screen.dart';
 import 'package:book_ogabek/src/ui/home/genres_screen.dart';
+import 'package:book_ogabek/src/ui/tab_bar/all_books.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -142,14 +143,7 @@ class _TabBarScreenState extends State<TabBarScreen> {
                 children: [
                   const NewsScreen(),
                   const HomeScreen(),
-                  Padding(
-                    padding: EdgeInsets.all(0 * o),
-                    child: Container(
-                      height: 100,
-                      width: 100,
-                      color: AppTheme.black,
-                    ),
-                  ),
+                  AllBooksScreen()
                 ],
               ),
             ),

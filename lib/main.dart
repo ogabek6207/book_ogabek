@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         platform: TargetPlatform.iOS,
         primarySwatch: Colors.blue,
       ),
-      home:   MusicPlayer(),
+      home:   const MainScreen(),
     );
   }
 }

@@ -6,12 +6,14 @@
 // flutter run -t lib/example_playlist.dart
 
 import 'package:audio_session/audio_session.dart';
+import 'package:book_ogabek/src/Utils/utils.dart';
+import 'package:book_ogabek/src/app_theme/app_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
-
 import 'common.dart';
 
 class MusicPlayer extends StatefulWidget {
@@ -24,7 +26,6 @@ class MusicPlayer extends StatefulWidget {
 class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
   late AudioPlayer _player;
   final _playlist = ConcatenatingAudioSource(children: [
-    // Remove this audio source from the Windows and Linux version because it's not supported yet
     if (kIsWeb ||
         ![TargetPlatform.windows, TargetPlatform.linux]
             .contains(defaultTargetPlatform))
@@ -88,7 +89,9 @@ class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
     // Listen to errors during playback.
     _player.playbackEventStream.listen((event) {},
         onError: (Object e, StackTrace stackTrace) {
-      print('A stream error occurred: $e');
+      if (kDebugMode) {
+        print('A stream error occurred: $e');
+      }
     });
     try {
       // Preloading audio is not currently supported on Linux.
@@ -96,7 +99,9 @@ class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
           preload: kIsWeb || defaultTargetPlatform != TargetPlatform.linux);
     } catch (e) {
       // Catch load errors: 404, invalid url...
-      print("Error loading audio source: $e");
+      if (kDebugMode) {
+        print("Error loading audio source: $e");
+      }
     }
   }
 
@@ -117,6 +122,8 @@ class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
     }
   }
 
+  bool save = false;
+
   Stream<PositionData> get _positionDataStream =>
       Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
           _player.positionStream,
@@ -127,6 +134,9 @@ class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    double h = Utils.windowHeight(context);
+    double w = Utils.windowWidth(context);
+    double o = (h + w) / 2;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -140,27 +150,133 @@ class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
                   stream: _player.sequenceStateStream,
                   builder: (context, snapshot) {
                     final state = snapshot.data;
-                    if (state?.sequence.isEmpty ?? true) return SizedBox();
+                    if (state?.sequence.isEmpty ?? true)
+                      return const SizedBox();
                     final metadata = state!.currentSource!.tag as AudioMetadata;
                     return Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child:
-                                Center(child: Image.network(metadata.artwork)),
+                        Container(
+                          child: Image.network(
+                            metadata.artwork,
+                            fit: BoxFit.cover,
+                          ),
+                          height: 370 * h,
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.only(bottom: 24 * h),
+                        ),
+                        Container(
+                          height: 84 * h,
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.only(
+                            left: 16 * w,
+                            right: 18 * w,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                child: Text(
+                                  "НИ СЫ. Будь уверен в своих силах и не позволяй сомнениям мешать двигаться тебе вперед",
+                                  style: TextStyle(
+                                    color: AppTheme.black,
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20 * o,
+                                    height: 28 / 20 * h,
+                                  ),
+                                ),
+                                height: 84 * h,
+                                width:
+                                    MediaQuery.of(context).size.width - 83 * w,
+                              ),
+                              const Spacer(),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    save = !save;
+                                  });
+                                },
+                                child: save
+                                    ? SvgPicture.asset(
+                                        "assets/icons/my_books.svg",
+                                      )
+                                    : SvgPicture.asset(
+                                        "assets/icons/mark.svg",
+                                      ),
+                              ),
+                            ],
                           ),
                         ),
-                        Text(metadata.album,
-                            style: Theme.of(context).textTheme.headline6),
-                        Text(metadata.title),
+                        Container(
+                          height: 25 * h,
+                          width: 135 * h,
+                          margin: EdgeInsets.only(top: 16 * h, left: 16 * w),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Джен Синсеро",
+                                style: TextStyle(
+                                  color: AppTheme.black6A,
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16 * o,
+                                ),
+                              ),
+                              const Spacer(),
+                              SvgPicture.asset("assets/icons/arrow_right.svg"),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 24 * h,
+                        ),
+                        Container(
+                          height: 22 * h,
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 16 * w),
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/more.svg",
+                              ),
+                              SizedBox(
+                                width: 8 * w,
+                              ),
+                              Text(
+                                "Содержание",
+                                style: TextStyle(
+                                  fontFamily: AppTheme.fontFamilyManrope,
+                                  color: AppTheme.black6A,
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16 * o,
+                                ),
+                              ),
+                              const Spacer(),
+                              Text(
+                                "Длительность: 06:29:08",
+                                style: TextStyle(
+                                  fontFamily: AppTheme.fontFamilyManrope,
+                                  color: AppTheme.black9E,
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16 * o,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        // Text(metadata.album,
+                        //     style: Theme.of(context).textTheme.headline6),
+                        // Text(metadata.title),
                       ],
                     );
                   },
                 ),
               ),
-              ControlButtons(_player),
               StreamBuilder<PositionData>(
                 stream: _positionDataStream,
                 builder: (context, snapshot) {
@@ -176,6 +292,8 @@ class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
                   );
                 },
               ),
+              ControlButtons(_player),
+
               const SizedBox(height: 8.0),
               Row(
                 children: [
@@ -231,50 +349,50 @@ class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
                   ),
                 ],
               ),
-              Container(
-                height: 240.0,
-                child: StreamBuilder<SequenceState?>(
-                  stream: _player.sequenceStateStream,
-                  builder: (context, snapshot) {
-                    final state = snapshot.data;
-                    final sequence = state?.sequence ?? [];
-                    return ReorderableListView(
-                      onReorder: (int oldIndex, int newIndex) {
-                        if (oldIndex < newIndex) newIndex--;
-                        _playlist.move(oldIndex, newIndex);
-                      },
-                      children: [
-                        for (var i = 0; i < sequence.length; i++)
-                          Dismissible(
-                            key: ValueKey(sequence[i]),
-                            background: Container(
-                              color: Colors.redAccent,
-                              alignment: Alignment.centerRight,
-                              child: const Padding(
-                                padding: EdgeInsets.only(right: 8.0),
-                                child: Icon(Icons.delete, color: Colors.white),
-                              ),
-                            ),
-                            onDismissed: (dismissDirection) {
-                              _playlist.removeAt(i);
-                            },
-                            child: Material(
-                              color: i == state!.currentIndex
-                                  ? Colors.grey.shade300
-                                  : null,
-                              child: ListTile(
-                                title: Text(sequence[i].tag.title as String),
-                                onTap: () {
-                                  _player.seek(Duration.zero, index: i);
-                                },
-                              ),
-                            ),
-                          ),
-                      ],
-                    );
-                  },
-                ),
-              ),
+              // SizedBox(
+              //   height: 240.0,
+              //   child: StreamBuilder<SequenceState?>(
+              //     stream: _player.sequenceStateStream,
+              //     builder: (context, snapshot) {
+              //       final state = snapshot.data;
+              //       final sequence = state?.sequence ?? [];
+              //       return ReorderableListView(
+              //         onReorder: (int oldIndex, int newIndex) {
+              //           if (oldIndex < newIndex) newIndex--;
+              //           _playlist.move(oldIndex, newIndex);
+              //         },
+              //         children: [
+              //           for (var i = 0; i < sequence.length; i++)
+              //             Dismissible(
+              //               key: ValueKey(sequence[i]),
+              //               background: Container(
+              //                 color: Colors.redAccent,
+              //                 alignment: Alignment.centerRight,
+              //                 child: const Padding(
+              //                   padding: EdgeInsets.only(right: 8.0),
+              //                   child: Icon(Icons.delete, color: Colors.white),
+              //                 ),
+              //               ),
+              //               onDismissed: (dismissDirection) {
+              //                 _playlist.removeAt(i);
+              //               },
+              //               child: Material(
+              //                 color: i == state!.currentIndex
+              //                     ? Colors.grey.shade300
+              //                     : null,
+              //                 child: ListTile(
+              //                   title: Text(sequence[i].tag.title as String),
+              //                   onTap: () {
+              //                     _player.seek(Duration.zero, index: i);
+              //                   },
+              //                 ),
+              //               ),
+              //             ),
+              //         ],
+              //       );
+              //     },
+              //   ),
+              // ),
             ],
           ),
         ),
@@ -300,96 +418,139 @@ class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
 class ControlButtons extends StatelessWidget {
   final AudioPlayer player;
 
-  ControlButtons(this.player);
+  const ControlButtons(this.player, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
+    double h = Utils.windowHeight(context);
+    double w = Utils.windowWidth(context);
+    double o = (h + w) / 2;
+    return Column(
       children: [
-        IconButton(
-          icon: Icon(Icons.volume_up),
-          onPressed: () {
-            showSliderDialog(
-              context: context,
-              title: "Adjust volume",
-              divisions: 10,
-              min: 0.0,
-              max: 1.0,
-              value: player.volume,
-              stream: player.volumeStream,
-              onChanged: player.setVolume,
-            );
-          },
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // IconButton(
+            //   icon: const Icon(Icons.volume_up),
+            //   onPressed: () {
+            //     showSliderDialog(
+            //       context: context,
+            //       title: "Adjust volume",
+            //       divisions: 10,
+            //       min: 0.0,
+            //       max: 1.0,
+            //       value: player.volume,
+            //       stream: player.volumeStream,
+            //       onChanged: player.setVolume,
+            //     );
+            //   },
+            // ),
+            StreamBuilder<SequenceState?>(
+              stream: player.sequenceStateStream,
+              builder: (context, snapshot) => IconButton(
+                icon: const Icon(Icons.skip_previous),
+                onPressed: player.hasPrevious ? player.seekToPrevious : null,
+              ),
+            ),
+            SizedBox(width: 45*w,),
+SvgPicture.asset("assets/icons/back30.svg"),
+            SizedBox(width: 40*w,),
+            StreamBuilder<PlayerState>(
+              stream: player.playerStateStream,
+              builder: (context, snapshot) {
+                final playerState = snapshot.data;
+                final processingState = playerState?.processingState;
+                final playing = playerState?.playing;
+                if (processingState == ProcessingState.loading ||
+                    processingState == ProcessingState.buffering) {
+                  return Container(
+                    margin: const EdgeInsets.all(8.0),
+                    width: 72.0,
+                    height: 72.0,
+                    child: const CircularProgressIndicator(),
+                  );
+                } else if (playing != true) {
+                  return IconButton(
+                    icon: const Icon(Icons.play_circle_fill),
+                    iconSize: 72.0,
+                    onPressed: player.play,
+                  );
+                } else if (processingState != ProcessingState.completed) {
+                  return IconButton(
+                    icon: const Icon(Icons.pause_circle_filled),
+                    iconSize: 72.0,
+                    onPressed: player.pause,
+                  );
+                } else {
+                  return IconButton(
+                    icon: const Icon(Icons.replay),
+                    iconSize: 72.0,
+                    onPressed: () => player.seek(Duration.zero,
+                        index: player.effectiveIndices!.first),
+                  );
+                }
+              },
+            ),
+            SizedBox(width: 40*w,),
+            SvgPicture.asset("assets/icons/forward30.svg"),
+            SizedBox(width: 45*w,),
+            StreamBuilder<SequenceState?>(
+              stream: player.sequenceStateStream,
+              builder: (context, snapshot) => IconButton(
+                icon: const Icon(Icons.skip_next),
+                onPressed: player.hasNext ? player.seekToNext : null,
+              ),
+            ),
+          ],
         ),
-        StreamBuilder<SequenceState?>(
-          stream: player.sequenceStateStream,
-          builder: (context, snapshot) => IconButton(
-            icon: Icon(Icons.skip_previous),
-            onPressed: player.hasPrevious ? player.seekToPrevious : null,
-          ),
-        ),
-        StreamBuilder<PlayerState>(
-          stream: player.playerStateStream,
-          builder: (context, snapshot) {
-            final playerState = snapshot.data;
-            final processingState = playerState?.processingState;
-            final playing = playerState?.playing;
-            if (processingState == ProcessingState.loading ||
-                processingState == ProcessingState.buffering) {
-              return Container(
-                margin: const EdgeInsets.all(8.0),
-                width: 64.0,
-                height: 64.0,
-                child: const CircularProgressIndicator(),
-              );
-            } else if (playing != true) {
-              return IconButton(
-                icon: const Icon(Icons.play_arrow),
-                iconSize: 64.0,
-                onPressed: player.play,
-              );
-            } else if (processingState != ProcessingState.completed) {
-              return IconButton(
-                icon: const Icon(Icons.pause),
-                iconSize: 64.0,
-                onPressed: player.pause,
-              );
-            } else {
-              return IconButton(
-                icon: const Icon(Icons.replay),
-                iconSize: 64.0,
-                onPressed: () => player.seek(Duration.zero,
-                    index: player.effectiveIndices!.first),
-              );
-            }
-          },
-        ),
-        StreamBuilder<SequenceState?>(
-          stream: player.sequenceStateStream,
-          builder: (context, snapshot) => IconButton(
-            icon: const Icon(Icons.skip_next),
-            onPressed: player.hasNext ? player.seekToNext : null,
-          ),
-        ),
-        StreamBuilder<double>(
-          stream: player.speedStream,
-          builder: (context, snapshot) => IconButton(
-            icon: Text("${snapshot.data?.toStringAsFixed(1)}x",
-                style: const TextStyle(fontWeight: FontWeight.bold)),
-            onPressed: () {
-              showSliderDialog(
-                context: context,
-                title: "Adjust speed",
-                divisions: 10,
-                min: 0.5,
-                max: 1.5,
-                value: player.speed,
-                stream: player.speedStream,
-                onChanged: player.setSpeed,
-              );
-            },
-          ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 16 * w,
+            ),
+            SvgPicture.asset("assets/icons/circle.svg"),
+            SizedBox(
+              width: 8 * w,
+            ),
+            Text(
+              "Скорость",
+              style: TextStyle(
+                color: AppTheme.black6A,
+                fontSize: 16 * o,
+                fontFamily: AppTheme.fontFamilyManrope,
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            StreamBuilder<double>(
+              stream: player.speedStream,
+              builder: (context, snapshot) => IconButton(
+                icon: Text(
+                  "${snapshot.data?.toStringAsFixed(1)}x",
+                  style: TextStyle(
+                    color: AppTheme.black6A,
+                    fontSize: 16 * o,
+                    fontFamily: AppTheme.fontFamilyManrope,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                onPressed: () {
+                  showSliderDialog(
+                    context: context,
+                    title: "Adjust speed",
+                    divisions: 10,
+                    min: 0.5,
+                    max: 1.5,
+                    value: player.speed,
+                    stream: player.speedStream,
+                    onChanged: player.setSpeed,
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ],
     );
