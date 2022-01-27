@@ -161,16 +161,26 @@ class _BookPagesScreenState extends State<BookPagesScreen> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return const PlayerScreen();
-                    }));
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return PlayerScreen(
+                            onBack: () {},
+                          );
+                        },
+                      ),
+                    );
                   },
                   child: Container(
                     height: 56 * h,
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.only(
-                        bottom: 40 * h, top: 40 * h, left: 16 * w, right: 16 * w),
+                        bottom: 40 * h,
+                        top: 40 * h,
+                        left: 16 * w,
+                        right: 16 * w),
                     decoration: BoxDecoration(
                       color: AppTheme.orange,
                       borderRadius: BorderRadius.circular(8 * o),

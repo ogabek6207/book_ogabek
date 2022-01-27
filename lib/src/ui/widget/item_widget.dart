@@ -43,19 +43,8 @@ class _ItemWidgetState extends State<ItemWidget> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8 * o),
             ),
-            child: Center(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8 * o),
-                child: CachedNetworkImage(
-                  imageUrl: widget.image,
-                  height: 182 * h,
-                  width: 182 * w,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) =>
-                      const CircularProgressIndicator.adaptive(),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                ),
-              ),
+            child: Image.asset(
+              "assets/images/book.png",
             ),
             width: 182 * w,
             height: 182 * h,
@@ -116,7 +105,6 @@ class _ItemWidgetState extends State<ItemWidget> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-
           ),
         ],
       ),

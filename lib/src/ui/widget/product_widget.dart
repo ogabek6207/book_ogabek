@@ -30,32 +30,10 @@ class _ProductWidgetState extends State<ProductWidget> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8 * o),
-            child: CachedNetworkImage(
-              imageUrl: "",
-              placeholder: (context, url) => Shimmer.fromColors(
-                baseColor: AppTheme.shimmerBaseColor,
-                highlightColor: AppTheme.shimmerHighColor,
-                child: ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      height: 190,
-                      width: 190,
-                      decoration: BoxDecoration(
-                        color: AppTheme.milk,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-              height: 190 * o,
-              width: 190 * o,
-              fit: BoxFit.cover,
+            child: Image.asset(
+              "assets/images/book.png",
             ),
           ),
-
           Container(
             margin: EdgeInsets.only(
               left: 16 * w,

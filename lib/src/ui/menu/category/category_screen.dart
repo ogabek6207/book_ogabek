@@ -23,48 +23,44 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: AppTheme.white,
+          title: Container(
+            padding: EdgeInsets.only(left: 19 * w),
+            height: 50 * h,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: AppTheme.milk,
+              borderRadius: BorderRadius.circular(8 * o),
+            ),
+            child: Row(
+              children: [
+                SvgPicture.asset(
+                  "assets/icons/search.svg",
+                ),
+                SizedBox(
+                  width: 8 * w,
+                ),
+                Text(
+                  "Поиск",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: AppTheme.black9E,
+                    fontSize: 16 * o,
+                    fontWeight: FontWeight.w500,
+                    fontStyle: FontStyle.normal,
+                    fontFamily: AppTheme.fontFamilyManrope,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
         backgroundColor: AppTheme.white,
-        body: ListView(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
+        body: Column(
           children: [
-            SizedBox(
-              height: 62 * h,
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 19 * w),
-              height: 50 * h,
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 16 * w),
-              decoration: BoxDecoration(
-                color: AppTheme.milk,
-                borderRadius: BorderRadius.circular(8 * o),
-              ),
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    "assets/icons/search.svg",
-                  ),
-                  SizedBox(
-                    width: 8 * w,
-                  ),
-                  Text(
-                    "Поиск",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: AppTheme.black9E,
-                      fontSize: 16 * o,
-                      fontWeight: FontWeight.w500,
-                      fontStyle: FontStyle.normal,
-                      fontFamily: AppTheme.fontFamilyManrope,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 24 * h,
-            ),
+            SizedBox(height: 18 * h),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
@@ -72,7 +68,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   Container(
                     decoration: BoxDecoration(
                       color: AppTheme.milk,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                     child: TabBar(
                       unselectedLabelStyle:
@@ -137,13 +133,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 32 * h,
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: const TabBarView(
-                children: [NewsScreen(), HomeScreen(), AllBooksScreen()],
+            const Expanded(
+              child: TabBarView(
+                children: [
+                  NewsScreen(),
+                  HomeScreen(),
+                  AllBooksScreen(),
+                ],
               ),
             ),
           ],

@@ -17,7 +17,14 @@ import 'package:rxdart/rxdart.dart';
 import 'common.dart';
 
 class PlayerScreen extends StatefulWidget {
-  const PlayerScreen({Key? key}) : super(key: key);
+  final Function() onBack;
+  final bool isMain;
+
+  const PlayerScreen({
+    Key? key,
+    required this.onBack,
+    this.isMain = false,
+  }) : super(key: key);
 
   @override
   _PlayerScreenState createState() => _PlayerScreenState();
@@ -141,7 +148,7 @@ class _PlayerScreenState extends State<PlayerScreen>
     double o = (h + w) / 2;
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(0),
+        preferredSize: const Size.fromHeight(0),
         child: AppBar(),
       ),
       body: ListView(
@@ -179,7 +186,11 @@ class _PlayerScreenState extends State<PlayerScreen>
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.pop(context);
+                                    if (widget.isMain) {
+                                      widget.onBack();
+                                    } else {
+                                      Navigator.pop(context);
+                                    }
                                   },
                                   child: Container(
                                     margin: EdgeInsets.only(

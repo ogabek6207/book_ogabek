@@ -20,19 +20,24 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  List<Widget> data = [
-    const CategoryScreen(),
-    const PlayerScreen(),
-    const MyBooksScreen(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
     return Scaffold(
-      body: data[_selectedIndex],
+      body: [
+        const CategoryScreen(),
+        PlayerScreen(
+          isMain: true,
+          onBack: () {
+            setState(() {
+              _selectedIndex = 0;
+            });
+          },
+        ),
+        const MyBooksScreen(),
+      ][_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (_index) {
@@ -44,13 +49,13 @@ class _MainScreenState extends State<MainScreen> {
           fontFamily: AppTheme.fontFamilyManrope,
           fontWeight: FontWeight.w600,
           fontSize: 12 * h,
-          height:  21 / 12 * h,
+          height: 21 / 12 * h,
         ),
         selectedLabelStyle: TextStyle(
           fontFamily: AppTheme.fontFamilyManrope,
           fontWeight: FontWeight.w600,
           fontSize: 12 * h,
-          height:  21 / 12 * h,
+          height: 21 / 12 * h,
         ),
         selectedFontSize: 12 * o,
         unselectedFontSize: 12 * o,
