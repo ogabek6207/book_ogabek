@@ -16,7 +16,6 @@ import 'music_player_screen2.dart';
 class MusicPlayer extends StatefulWidget {
   const MusicPlayer({Key? key}) : super(key: key);
 
-
   @override
   _MusicPlayerState createState() => _MusicPlayerState();
 }

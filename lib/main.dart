@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:book_ogabek/src/ui/main_screen.dart';
 import 'package:book_ogabek/src/ui/music_player/music_player_screen.dart';
 import 'package:book_ogabek/src/ui/music_player/music_player_screen1.dart';
+import 'package:book_ogabek/src/ui/music_player/music_player_screen_bottom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         platform: TargetPlatform.iOS,
         primarySwatch: Colors.blue,
       ),
-      home:  MusicPlayer(),
+      home:   MusicPlayerBottom(),
     );
   }
 }
