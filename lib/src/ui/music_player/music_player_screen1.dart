@@ -11,7 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
-import 'music_player_screen2.dart';
+
+import 'common.dart';
 
 class MusicPlayer extends StatefulWidget {
   const MusicPlayer({Key? key}) : super(key: key);
@@ -175,7 +176,7 @@ class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
                   );
                 },
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Row(
                 children: [
                   StreamBuilder<LoopMode>(
@@ -216,8 +217,8 @@ class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
                       final shuffleModeEnabled = snapshot.data ?? false;
                       return IconButton(
                         icon: shuffleModeEnabled
-                            ? Icon(Icons.shuffle, color: Colors.orange)
-                            : Icon(Icons.shuffle, color: Colors.grey),
+                            ? const Icon(Icons.shuffle, color: Colors.orange)
+                            : const Icon(Icons.shuffle, color: Colors.grey),
                         onPressed: () async {
                           final enable = !shuffleModeEnabled;
                           if (enable) {
@@ -249,8 +250,8 @@ class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
                             background: Container(
                               color: Colors.redAccent,
                               alignment: Alignment.centerRight,
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 8.0),
+                              child: const Padding(
+                                padding: EdgeInsets.only(right: 8.0),
                                 child: Icon(Icons.delete, color: Colors.white),
                               ),
                             ),
@@ -278,7 +279,7 @@ class _MusicPlayerState extends State<MusicPlayer> with WidgetsBindingObserver {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
           onPressed: () {
             _playlist.add(AudioSource.uri(
               Uri.parse("asset:///audio/nature.mp3"),
@@ -337,26 +338,26 @@ class ControlButtons extends StatelessWidget {
             if (processingState == ProcessingState.loading ||
                 processingState == ProcessingState.buffering) {
               return Container(
-                margin: EdgeInsets.all(8.0),
+                margin: const EdgeInsets.all(8.0),
                 width: 64.0,
                 height: 64.0,
-                child: CircularProgressIndicator(),
+                child: const CircularProgressIndicator(),
               );
             } else if (playing != true) {
               return IconButton(
-                icon: Icon(Icons.play_arrow),
+                icon: const Icon(Icons.play_arrow),
                 iconSize: 64.0,
                 onPressed: player.play,
               );
             } else if (processingState != ProcessingState.completed) {
               return IconButton(
-                icon: Icon(Icons.pause),
+                icon: const Icon(Icons.pause),
                 iconSize: 64.0,
                 onPressed: player.pause,
               );
             } else {
               return IconButton(
-                icon: Icon(Icons.replay),
+                icon: const Icon(Icons.replay),
                 iconSize: 64.0,
                 onPressed: () => player.seek(Duration.zero,
                     index: player.effectiveIndices!.first),
@@ -367,7 +368,7 @@ class ControlButtons extends StatelessWidget {
         StreamBuilder<SequenceState?>(
           stream: player.sequenceStateStream,
           builder: (context, snapshot) => IconButton(
-            icon: Icon(Icons.skip_next),
+            icon: const Icon(Icons.skip_next),
             onPressed: player.hasNext ? player.seekToNext : null,
           ),
         ),
@@ -375,7 +376,7 @@ class ControlButtons extends StatelessWidget {
           stream: player.speedStream,
           builder: (context, snapshot) => IconButton(
             icon: Text("${snapshot.data?.toStringAsFixed(1)}x",
-                style: TextStyle(fontWeight: FontWeight.bold)),
+                style: const TextStyle(fontWeight: FontWeight.bold)),
             onPressed: () {
               showSliderDialog(
                 context: context,
