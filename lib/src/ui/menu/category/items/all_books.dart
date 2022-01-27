@@ -1,23 +1,17 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
-import 'package:book_ogabek/src/app_theme/app_theme.dart';
-import 'package:book_ogabek/src/ui/book_pages/book_pages_screen.dart';
-import 'package:book_ogabek/src/ui/music_player/music_player_screen1.dart';
+import 'package:book_ogabek/src/utils/app_theme.dart';
+import 'package:book_ogabek/src/ui/menu/player/player_screen.dart';
 import 'package:book_ogabek/src/ui/widget/product_widget.dart';
 import 'package:flutter/material.dart';
 
-class NewsScreen extends StatefulWidget {
-  const NewsScreen({
-    Key? key,
-  }) : super(key: key);
+class AllBooksScreen extends StatefulWidget {
+  const AllBooksScreen({Key? key}) : super(key: key);
 
   @override
-  _NewsScreenState createState() => _NewsScreenState();
+  _AllBooksScreenState createState() => _AllBooksScreenState();
 }
 
-class _NewsScreenState extends State<NewsScreen> {
-  bool isGrid = true;
-
-  @override
+class _AllBooksScreenState extends State<AllBooksScreen> {
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -36,16 +30,16 @@ class _NewsScreenState extends State<NewsScreen> {
               child: Row(
                 children: [
                   SizedBox(width: 24 * w),
-                   Expanded(
+                  Expanded(
                     child: GestureDetector(
-
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context){
-                            return const MusicPlayer();
-                          }),);
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return const PlayerScreen();
+                            }),
+                          );
                         },
-
-
                         child: const ProductWidget()),
                   ),
                   SizedBox(width: 16 * w),

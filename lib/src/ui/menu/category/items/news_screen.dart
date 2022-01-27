@@ -1,17 +1,22 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
-import 'package:book_ogabek/src/app_theme/app_theme.dart';
-import 'package:book_ogabek/src/ui/music_player/music_player_screen1.dart';
+import 'package:book_ogabek/src/utils/app_theme.dart';
+import 'package:book_ogabek/src/ui/menu/player/player_screen.dart';
 import 'package:book_ogabek/src/ui/widget/product_widget.dart';
 import 'package:flutter/material.dart';
 
-class AllBooksScreen extends StatefulWidget {
-  const AllBooksScreen({Key? key}) : super(key: key);
+class NewsScreen extends StatefulWidget {
+  const NewsScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  _AllBooksScreenState createState() => _AllBooksScreenState();
+  _NewsScreenState createState() => _NewsScreenState();
 }
 
-class _AllBooksScreenState extends State<AllBooksScreen> {
+class _NewsScreenState extends State<NewsScreen> {
+  bool isGrid = true;
+
+  @override
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -36,7 +41,7 @@ class _AllBooksScreenState extends State<AllBooksScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {
-                              return const MusicPlayer();
+                              return const PlayerScreen();
                             }),
                           );
                         },

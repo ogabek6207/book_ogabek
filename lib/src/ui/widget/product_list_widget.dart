@@ -1,5 +1,5 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
-import 'package:book_ogabek/src/app_theme/app_theme.dart';
+import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 

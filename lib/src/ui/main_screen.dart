@@ -1,9 +1,12 @@
-import 'package:book_ogabek/src/app_theme/app_theme.dart';
-import 'package:book_ogabek/src/ui/my_books/my_books_screen.dart';
-import 'package:book_ogabek/src/ui/save_book/save_book_screen.dart';
-import 'package:book_ogabek/src/ui/tab_bar/tabbar_screen.dart';
+import 'package:book_ogabek/src/utils/app_theme.dart';
+import 'package:book_ogabek/src/utils/utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'menu/category/category_screen.dart';
+import 'menu/my_books/my_books_screen.dart';
+import 'menu/player/player_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -18,13 +21,16 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   List<Widget> data = [
-    const TabBarScreen(),
+    const CategoryScreen(),
+    const PlayerScreen(),
     const MyBooksScreen(),
-    const SaveBookScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    double h = Utils.windowHeight(context);
+    double w = Utils.windowWidth(context);
+    double o = (h + w) / 2;
     return Scaffold(
       body: data[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -34,6 +40,20 @@ class _MainScreenState extends State<MainScreen> {
             _selectedIndex = _index;
           });
         },
+        unselectedLabelStyle: TextStyle(
+          fontFamily: AppTheme.fontFamilyManrope,
+          fontWeight: FontWeight.w600,
+          fontSize: 12 * h,
+          height:  21 / 12 * h,
+        ),
+        selectedLabelStyle: TextStyle(
+          fontFamily: AppTheme.fontFamilyManrope,
+          fontWeight: FontWeight.w600,
+          fontSize: 12 * h,
+          height:  21 / 12 * h,
+        ),
+        selectedFontSize: 12 * o,
+        unselectedFontSize: 12 * o,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: AppTheme.orange,
         items: [

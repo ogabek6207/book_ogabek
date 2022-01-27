@@ -1,19 +1,19 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
-import 'package:book_ogabek/src/app_theme/app_theme.dart';
-import 'package:book_ogabek/src/ui/home/news_screen.dart';
-import 'package:book_ogabek/src/ui/home/genres_screen.dart';
-import 'package:book_ogabek/src/ui/tab_bar/all_books.dart';
+import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'items/all_books.dart';
+import 'items/genres_screen.dart';
+import 'items/news_screen.dart';
 
-class TabBarScreen extends StatefulWidget {
-  const TabBarScreen({Key? key}) : super(key: key);
+class CategoryScreen extends StatefulWidget {
+  const CategoryScreen({Key? key}) : super(key: key);
 
   @override
-  _TabBarScreenState createState() => _TabBarScreenState();
+  _CategoryScreenState createState() => _CategoryScreenState();
 }
 
-class _TabBarScreenState extends State<TabBarScreen> {
+class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -24,6 +24,8 @@ class _TabBarScreenState extends State<TabBarScreen> {
       child: Scaffold(
         backgroundColor: AppTheme.white,
         body: ListView(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             SizedBox(
               height: 62 * h,
@@ -139,12 +141,8 @@ class _TabBarScreenState extends State<TabBarScreen> {
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height,
-              child: TabBarView(
-                children: [
-                  const NewsScreen(),
-                  const HomeScreen(),
-                  AllBooksScreen()
-                ],
+              child: const TabBarView(
+                children: [NewsScreen(), HomeScreen(), AllBooksScreen()],
               ),
             ),
           ],
