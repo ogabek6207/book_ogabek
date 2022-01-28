@@ -2,22 +2,22 @@ import 'package:book_ogabek/src/Utils/utils.dart';
 import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class ProductWidget extends StatefulWidget {
-  // Image image;
-  // String name;
-  // String auther;
-  //
-  // ProductWidget({Key? key,
-  //   required this.name,
-  //   required this.image,
-  //   required this.auther,
-  // }) : super(key: key);
+class NewBookWidget extends StatefulWidget {
+
+  String name;
+
+
+  NewBookWidget({Key? key,
+    required this.name,
+
+
+  }) : super(key: key);
 
   @override
-  _ProductWidgetState createState() => _ProductWidgetState();
+  _NewBookWidgetState createState() => _NewBookWidgetState();
 }
 
-class _ProductWidgetState extends State<ProductWidget> {
+class _NewBookWidgetState extends State<NewBookWidget> {
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -34,8 +34,8 @@ class _ProductWidgetState extends State<ProductWidget> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8 * o),
-            child: Image.asset(
-              "assets/images/book.png",
+            child: Image.network(
+             "",
             ),
           ),
           Container(
@@ -58,7 +58,7 @@ class _ProductWidgetState extends State<ProductWidget> {
               left: 16 * w,
             ),
             child: Text(
-              "НИ СЫ. Будь уверен в своих силах и не позв...",
+              widget.name,
               maxLines: 2,
               style: TextStyle(
                 fontStyle: FontStyle.normal,

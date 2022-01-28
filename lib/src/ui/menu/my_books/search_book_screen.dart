@@ -108,10 +108,10 @@ class _SearchBookScreenState extends State<SearchBookScreen> {
                                 }),
                               );
                             },
-                            child: const ProductWidget()),
+                            child:  ProductWidget()),
                       ),
                       SizedBox(width: 16 * w),
-                       const Expanded(
+                        Expanded(
                         child: ProductWidget(),
                       ),
                       SizedBox(width: 24 * w),

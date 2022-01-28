@@ -19,7 +19,6 @@ class AppProvider {
       http.Response response = await http
           .get(
             Uri.parse(url),
-
           )
           .timeout(duration);
       return _result(response);
@@ -44,13 +43,11 @@ class AppProvider {
       print(data);
     }
 
-
     try {
       http.Response response = await http
           .post(
             Uri.parse(url),
             body: data,
-
           )
           .timeout(duration);
 
@@ -99,23 +96,13 @@ class AppProvider {
     }
   }
 
-
-
-
-
-
-
-
-
-
   Future<HttpResult> getBook() async {
-
-
     String url = baseUrl + "books";
     return _getResponse(url);
   }
 
-
-
-
+  Future<HttpResult> getNewBooks() async {
+    String url = baseUrl + "books?collections=newest";
+    return _getResponse(url);
+  }
 }

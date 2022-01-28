@@ -8,5 +8,7 @@ class Repository {
 
   Future<HttpResult> getBook() => _provider.getBook();
 
+  Future<HttpResult> getNewBooks() => _provider.getNewBooks();
+
 
 }

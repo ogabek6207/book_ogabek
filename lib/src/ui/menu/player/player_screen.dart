@@ -175,14 +175,13 @@ class _PlayerScreenState extends State<PlayerScreen>
                           Expanded(
                             child: Stack(
                               children: [
-                                Container(
+                                SizedBox(
                                   child: Image.network(
                                     metadata.artwork,
                                     fit: BoxFit.cover,
                                   ),
-                                  height: 370 * h,
+                                  height: 445 * h,
                                   width: MediaQuery.of(context).size.width,
-                                  margin: EdgeInsets.only(bottom: 24 * h),
                                 ),
                                 GestureDetector(
                                   onTap: () {
@@ -194,10 +193,8 @@ class _PlayerScreenState extends State<PlayerScreen>
                                   },
                                   child: Container(
                                     margin: EdgeInsets.only(
-                                      top: 20 * h,
                                       left: 20 * w,
                                     ),
-                                    height: 54 * o,
                                     width: 54 * o,
                                     child: SvgPicture.asset(
                                         "assets/icons/arrow_left.svg"),
@@ -244,7 +241,7 @@ class _PlayerScreenState extends State<PlayerScreen>
                                           "assets/icons/my_books.svg",
                                         )
                                       : SvgPicture.asset(
-                                          "assets/icons/mark.svg",
+                                          "assets/icons/my_books1.svg",
                                         ),
                                 ),
                               ],
@@ -517,13 +514,19 @@ class ControlButtons extends StatelessWidget {
                   );
                 } else if (playing != true) {
                   return IconButton(
-                    icon: const Icon(Icons.play_circle_fill),
+                    icon: const Icon(
+                      Icons.play_circle_fill,
+                      color: AppTheme.orange,
+                    ),
                     iconSize: 72.0,
                     onPressed: player.play,
                   );
                 } else if (processingState != ProcessingState.completed) {
                   return IconButton(
-                    icon: const Icon(Icons.pause_circle_filled),
+                    icon: const Icon(
+                      Icons.pause_circle_filled,
+                      color: AppTheme.orange,
+                    ),
                     iconSize: 72.0,
                     onPressed: player.pause,
                   );
@@ -576,15 +579,20 @@ class ControlButtons extends StatelessWidget {
             StreamBuilder<double>(
               stream: player.speedStream,
               builder: (context, snapshot) => IconButton(
-                icon: Text(
-                  "${snapshot.data?.toStringAsFixed(1)}x",
-                  style: TextStyle(
-                    color: AppTheme.black6A,
-                    fontSize: 16 * o,
-                    fontFamily: AppTheme.fontFamilyManrope,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w600,
-                  ),
+                icon: Row(
+                  children: [
+
+                    Text(
+                      "${snapshot.data?.toStringAsFixed(1)}x",
+                      style: TextStyle(
+                        color: AppTheme.black6A,
+                        fontSize: 16 * o,
+                        fontFamily: AppTheme.fontFamilyManrope,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
                 ),
                 onPressed: () {
                   showSliderDialog(
@@ -602,8 +610,6 @@ class ControlButtons extends StatelessWidget {
             ),
           ],
         ),
-
-
       ],
     );
   }

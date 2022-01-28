@@ -100,7 +100,7 @@ class _MyBooksScreenState extends State<MyBooksScreen> {
                               child: ProductWidget(),
                             ),
                             SizedBox(width: 16 * w),
-                            const Expanded(
+                             Expanded(
                               child: ProductWidget(),
                             ),
                             SizedBox(width: 24 * w),
@@ -111,75 +111,7 @@ class _MyBooksScreenState extends State<MyBooksScreen> {
               ],
             ),
           ),
-          Container(
-            height: 76 * h,
-            color: AppTheme.white,
-            width: MediaQuery.of(context).size.width,
-            child: Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(
-                    left: 16 * w,
-                    right: 12 * w,
-                  ),
-                  height: 44 * o,
-                  width: 44 * w,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: AppTheme.black.withOpacity(0.1),
-                      width: 1,
-                    ),
-                  ),
-                  child: Image.asset(
-                    "assets/images/image.png",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                SizedBox(
-                  width: 234 * w,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Часть 1. Как ты дошел до такой жизни",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: TextStyle(
-                          color: AppTheme.black,
-                          fontWeight: FontWeight.w500,
-                          fontStyle: FontStyle.normal,
-                          fontFamily: AppTheme.fontFamilyManrope,
-                          fontSize: 16 * o,
-                        ),
-                      ),
-                      Text(
-                        "Осталось: 06:12:59 ",
-                        style: TextStyle(
-                          color: AppTheme.black9E,
-                          fontWeight: FontWeight.w500,
-                          fontStyle: FontStyle.normal,
-                          fontFamily: AppTheme.fontFamilyManrope,
-                          fontSize: 14 * o,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: 30 * w,
-                ),
-                SvgPicture.asset(
-                  "assets/icons/play.svg",
-                  color: AppTheme.orange,
-                ),
-                SizedBox(
-                  width: 32 * w,
-                ),
-                SvgPicture.asset("assets/icons/error.svg"),
-              ],
-            ),
-          ),
+
         ],
       ),
     );
