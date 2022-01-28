@@ -74,7 +74,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       unselectedLabelStyle:
                           const TextStyle(color: AppTheme.milk),
                       indicatorColor: AppTheme.orange,
-                      unselectedLabelColor: AppTheme.black6A,
+                      unselectedLabelColor: AppTheme.milk,
                       indicator: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12),
