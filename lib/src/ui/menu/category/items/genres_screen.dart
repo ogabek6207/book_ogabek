@@ -53,16 +53,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Психология",
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                        color: AppTheme.black,
-                                        fontFamily: AppTheme.fontFamilyManrope,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16 * o,
-                                      ),
-                                    ),
+                                          "Психология",
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                          style: TextStyle(
+                                            color: AppTheme.black,
+                                            fontFamily: AppTheme.fontFamilyManrope,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 16 * o,
+                                          ),
+                                        ),
                                     SizedBox(
                                       width: 4 * w,
                                     ),

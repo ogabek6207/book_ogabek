@@ -1,5 +1,6 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
 import 'package:book_ogabek/src/ui/menu/my_books/search_book_screen.dart';
+import 'package:book_ogabek/src/ui/widget/book_widget.dart';
 import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:book_ogabek/src/ui/widget/product_widget.dart';
 import 'package:flutter/material.dart';
@@ -80,7 +81,7 @@ class _MyBooksScreenState extends State<MyBooksScreen> {
                 ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.only(top: 16 * h),
+
                     itemCount: (10 + 1) ~/ 2,
                     itemBuilder: (context, index) {
                       return Container(
@@ -89,15 +90,21 @@ class _MyBooksScreenState extends State<MyBooksScreen> {
                         ),
                         child: Row(
                           children: [
-                            SizedBox(width: 24 * w),
+                            SizedBox(width: 16 * w),
                             Expanded(
-                              child: ProductWidget(),
+                              child: BookWidget(
+                                name: "НИ СЫ. Будь уверен в своих силах и не позв...",
+                                image: "assets/images/book.png",
+                              ),
                             ),
                             SizedBox(width: 16 * w),
                              Expanded(
-                              child: ProductWidget(),
+                              child: BookWidget(
+                                name: "НИ СЫ. Будь уверен в своих силах и не позв...",
+                                image: "assets/images/book.png",
+                              ),
                             ),
-                            SizedBox(width: 24 * w),
+                            SizedBox(width: 16 * w),
                           ],
                         ),
                       );

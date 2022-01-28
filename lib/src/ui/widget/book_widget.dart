@@ -34,12 +34,50 @@ class _BookWidgetState extends State<BookWidget> {
           SizedBox(
             height: 190 * o,
             width: 190 * o,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8 * o),
-              child: Image.asset(
-                widget.image,
-                fit: BoxFit.cover,
-              ),
+            child: Stack(
+              children: [
+                SizedBox(
+                  height: 190 * o,
+                  width: 190 * o,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8 * o),
+                    child: Image.asset(
+                      widget.image,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(right: 8*w, bottom: 13*h),
+                          height: 24,
+                          width: 67 * w,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4 * o),
+                            color: AppTheme.black.withOpacity(0.3),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Еще 2:34",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: AppTheme.white,
+                                fontSize: 12 * o,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
           Container(
