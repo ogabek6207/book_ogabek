@@ -4,6 +4,7 @@ import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:book_ogabek/src/ui/widget/product_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:page_transition/page_transition.dart';
 
 class MyBooksScreen extends StatefulWidget {
   const MyBooksScreen({Key? key}) : super(key: key);
@@ -39,14 +40,7 @@ class _MyBooksScreenState extends State<MyBooksScreen> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return SearchBookScreen();
-                  },
-                ),
-              );
+              Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: const SearchBookScreen()));
             },
             child: Container(
               padding: EdgeInsets.only(left: 19 * w),

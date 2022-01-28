@@ -48,6 +48,7 @@ class _SearchBookScreenState extends State<SearchBookScreen> {
                       ),
                       Expanded(
                         child: TextField(
+                          autofocus: true,
                           controller: _controller,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
@@ -69,6 +70,7 @@ class _SearchBookScreenState extends State<SearchBookScreen> {
                   onTap: () {
                     setState(() {
                       _controller.text = "";
+                      Navigator.pop(context);
                     });
                   },
                   child:   Text(

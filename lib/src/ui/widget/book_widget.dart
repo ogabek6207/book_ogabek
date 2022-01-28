@@ -34,7 +34,7 @@ class _BookWidgetState extends State<BookWidget> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8 * o),
-            child: Image.network(
+            child: Image.asset(
              widget.image,
             ),
           ),
