@@ -28,9 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ListView(
               padding: EdgeInsets.zero,
               children: [
-                SizedBox(
-                  height: 16 * h,
-                ),
+
                 ListView.builder(
                   shrinkWrap: true,
                   padding: EdgeInsets.zero,
@@ -47,7 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(
                                 width: 24 * w,
                               ),
-                              SizedBox(
+                              Container(
+                                margin: EdgeInsets.only(top: 32*h),
                                 width: 240,
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     SvgPicture.asset(
                                       "assets/icons/arrow_right.svg",
                                       color: AppTheme.black,
-                                      height: 18 * h,
+                                      height: 14 * h,
                                       width: 11 * w,
                                     )
                                   ],
@@ -84,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             top: 24 * h,
                             bottom: 32 * h,
                           ),
-                          height: 266 * h,
+                          height: 284 * h,
                           child: ListView.builder(
                             padding: EdgeInsets.only(left: 24 * w),
                             scrollDirection: Axis.horizontal,
@@ -97,6 +96,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               image: "",
                             ),
                           ),
+                        ),
+                        Container(height: 1,
+                          width: MediaQuery.of(context).size.width,
+                          color: AppTheme.black.withOpacity(0.1),
                         ),
                       ],
                     );

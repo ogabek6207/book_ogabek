@@ -1,6 +1,5 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
 import 'package:book_ogabek/src/utils/app_theme.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -34,20 +33,21 @@ class _ItemWidgetState extends State<ItemWidget> {
       margin: EdgeInsets.only(
         right: 16 * w,
       ),
-      width: 182 * w,
+      width: 190 * w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
+            margin: EdgeInsets.only(bottom: 14*h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8 * o),
             ),
             child: Image.asset(
               "assets/images/book.png",
             ),
-            width: 182 * w,
-            height: 182 * h,
+            width: 190 * o,
+            height: 190 * o,
           ),
           Container(
             margin: EdgeInsets.only(right: 16 * w),
@@ -77,34 +77,19 @@ class _ItemWidgetState extends State<ItemWidget> {
                     ),
                   ),
           ),
-          SizedBox(
-            height: 48,
-            child: widget.name.isEmpty
-                ? Shimmer.fromColors(
-                    child: Container(
-                      height: 48,
-                      width: 182,
-                      decoration: BoxDecoration(
-                        color: AppTheme.milk,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                    ),
-                    baseColor: AppTheme.shimmerBaseColor,
-                    highlightColor: AppTheme.shimmerHighColor)
-                : Text(
-                    widget.name,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontStyle: FontStyle.normal,
-                      fontFamily: AppTheme.fontFamilyManrope,
-                      overflow: TextOverflow.ellipsis,
-                      color: AppTheme.black,
-                      fontSize: 16 * o,
-                      height: 1.5,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+          Text(
+            widget.name,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontStyle: FontStyle.normal,
+              fontFamily: AppTheme.fontFamilyManrope,
+              overflow: TextOverflow.ellipsis,
+              color: AppTheme.black,
+              fontSize: 16 * o,
+              height: 1.5,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ],
       ),

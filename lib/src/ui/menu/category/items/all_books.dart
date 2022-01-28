@@ -1,11 +1,8 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
-import 'package:book_ogabek/src/bloc/book_bloc.dart';
-import 'package:book_ogabek/src/model/book_model.dart';
 import 'package:book_ogabek/src/ui/widget/book_widget.dart';
 import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:book_ogabek/src/ui/menu/player/player_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class AllBooksScreen extends StatefulWidget {
   const AllBooksScreen({Key? key}) : super(key: key);
@@ -34,11 +31,11 @@ class _AllBooksScreenState extends State<AllBooksScreen> {
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.only(
-              bottom: 16 * h,
+              bottom: 30 * h,
             ),
             child: Row(
               children: [
-                SizedBox(width: 24 * w),
+                SizedBox(width: 16 * w),
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
@@ -53,20 +50,20 @@ class _AllBooksScreenState extends State<AllBooksScreen> {
                         ),
                       );
                     },
-                    child: BookWidget(
+                    child: const BookWidget(
                       name: "НИ СЫ. Будь уверен в своих силах и не позв...",
                       image: "assets/images/book.png",
                     ),
                   ),
                 ),
                 SizedBox(width: 16 * w),
-                Expanded(
+                const Expanded(
                   child: BookWidget(
                     name: "НИ СЫ. Будь уверен в своих силах и не позв...",
                     image: "assets/images/book.png",
                   ),
                 ),
-                SizedBox(width: 24 * w),
+                SizedBox(width: 16 * w),
               ],
             ),
           );

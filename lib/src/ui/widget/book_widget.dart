@@ -3,14 +3,13 @@ import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class BookWidget extends StatefulWidget {
-  String image;
-  String name;
+  final String image;
+  final String name;
 
-
-  BookWidget({Key? key,
+  const BookWidget({
+    Key? key,
     required this.name,
     required this.image,
-
   }) : super(key: key);
 
   @override
@@ -32,16 +31,19 @@ class _BookWidgetState extends State<BookWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8 * o),
-            child: Image.asset(
-             widget.image,
+          SizedBox(
+            height: 190 * o,
+            width: 190 * o,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8 * o),
+              child: Image.asset(
+                widget.image,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Container(
-            margin: EdgeInsets.only(
-              left: 16 * w,
-            ),
+            margin: EdgeInsets.only(top: 9 * h),
             child: Text(
               "Джен Синсеро",
               style: TextStyle(
@@ -53,22 +55,17 @@ class _BookWidgetState extends State<BookWidget> {
               ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(
-              left: 16 * w,
-            ),
-            child: Text(
-              widget.name,
-              maxLines: 2,
-              style: TextStyle(
-                fontStyle: FontStyle.normal,
-                fontFamily: AppTheme.fontFamilyManrope,
-                overflow: TextOverflow.ellipsis,
-                color: AppTheme.black,
-                fontSize: 16 * o,
-                height: 1.5,
-                fontWeight: FontWeight.w600,
-              ),
+          Text(
+            widget.name,
+            maxLines: 2,
+            style: TextStyle(
+              fontStyle: FontStyle.normal,
+              fontFamily: AppTheme.fontFamilyManrope,
+              overflow: TextOverflow.ellipsis,
+              color: AppTheme.black,
+              fontSize: 16 * o,
+              height: 1.5,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ],
