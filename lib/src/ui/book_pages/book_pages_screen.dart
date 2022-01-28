@@ -26,7 +26,7 @@ class _BookPagesScreenState extends State<BookPagesScreen> {
           Expanded(
             child: ListView(
               children: [
-                Container(
+                SizedBox(
                   height: 428 * h,
                   width: MediaQuery.of(context).size.width,
                   child: Stack(

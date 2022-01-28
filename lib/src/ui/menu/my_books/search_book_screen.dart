@@ -13,7 +13,7 @@ class SearchBookScreen extends StatefulWidget {
 }
 
 class _SearchBookScreenState extends State<SearchBookScreen> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -110,10 +110,10 @@ class _SearchBookScreenState extends State<SearchBookScreen> {
                                 }),
                               );
                             },
-                            child:  ProductWidget()),
+                            child:  const ProductWidget()),
                       ),
                       SizedBox(width: 16 * w),
-                        Expanded(
+                        const Expanded(
                         child: ProductWidget(),
                       ),
                       SizedBox(width: 24 * w),

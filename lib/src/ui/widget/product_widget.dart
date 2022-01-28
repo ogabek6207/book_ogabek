@@ -3,6 +3,8 @@ import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class ProductWidget extends StatefulWidget {
+  const ProductWidget({Key? key}) : super(key: key);
+
   // Image image;
   // String name;
   // String auther;

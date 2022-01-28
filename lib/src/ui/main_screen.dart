@@ -1,6 +1,5 @@
 import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:book_ogabek/src/utils/utils.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

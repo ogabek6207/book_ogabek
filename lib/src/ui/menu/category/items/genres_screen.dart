@@ -28,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ListView(
               padding: EdgeInsets.zero,
               children: [
-
                 ListView.builder(
                   shrinkWrap: true,
                   padding: EdgeInsets.zero,
@@ -46,31 +45,32 @@ class _HomeScreenState extends State<HomeScreen> {
                                 width: 24 * w,
                               ),
                               Container(
-                                margin: EdgeInsets.only(top: 32*h),
+                                margin: EdgeInsets.only(top: 32 * h),
                                 width: 240,
                                 child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                          "Психология",
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 1,
-                                          style: TextStyle(
-                                            color: AppTheme.black,
-                                            fontFamily: AppTheme.fontFamilyManrope,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 16 * o,
-                                          ),
-                                        ),
+                                      "Психология",
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                      style: TextStyle(
+                                        color: AppTheme.black,
+                                        fontFamily: AppTheme.fontFamilyManrope,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 16 * o,
+                                      ),
+                                    ),
                                     SizedBox(
                                       width: 4 * w,
                                     ),
-                                    SvgPicture.asset(
-                                      "assets/icons/arrow_right.svg",
-                                      color: AppTheme.black,
-                                      height: 14 * h,
-                                      width: 11 * w,
+                                    Container(
+                                      margin: EdgeInsets.only(top: 6 * h),
+                                      child: SvgPicture.asset(
+                                        "assets/icons/arrow_right.svg",
+                                        color: AppTheme.black,
+                                        height: 14 * h,
+                                        width: 11 * w,
+                                      ),
                                     )
                                   ],
                                 ),
@@ -97,7 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         ),
-                        Container(height: 1,
+                        Container(
+                          height: 1,
                           width: MediaQuery.of(context).size.width,
                           color: AppTheme.black.withOpacity(0.1),
                         ),

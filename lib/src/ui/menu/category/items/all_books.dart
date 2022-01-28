@@ -22,7 +22,7 @@ class _AllBooksScreenState extends State<AllBooksScreen> {
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
-    double o = (h + w) / 2;
+
     return Scaffold(
       backgroundColor: AppTheme.white,
       body: ListView.builder(

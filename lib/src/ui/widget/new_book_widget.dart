@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 class NewBookWidget extends StatefulWidget {
 
-  String name;
+  final String name;
 
 
-  NewBookWidget({Key? key,
+  const NewBookWidget({Key? key,
     required this.name,
 
 

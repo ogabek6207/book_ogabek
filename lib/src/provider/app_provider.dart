@@ -37,35 +37,7 @@ class AppProvider {
     }
   }
 
-  static Future<HttpResult> _postResponse(String url, data) async {
-    if (kDebugMode) {
-      print(url);
-      print(data);
-    }
 
-    try {
-      http.Response response = await http
-          .post(
-            Uri.parse(url),
-            body: data,
-          )
-          .timeout(duration);
-
-      return _result(response);
-    } on SocketException catch (_) {
-      return HttpResult(
-        statusCode: -1,
-        isSuccess: false,
-        result: "Internet Error",
-      );
-    } on TimeoutException catch (_) {
-      return HttpResult(
-        statusCode: -1,
-        isSuccess: false,
-        result: "Internet Error",
-      );
-    }
-  }
 
   static HttpResult _result(http.Response response) {
     if (kDebugMode) {

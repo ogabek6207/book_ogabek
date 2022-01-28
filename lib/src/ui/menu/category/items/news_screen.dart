@@ -1,7 +1,6 @@
 import 'package:book_ogabek/src/Utils/utils.dart';
 import 'package:book_ogabek/src/ui/book_pages/book_pages_screen.dart';
 import 'package:book_ogabek/src/ui/widget/book_widget.dart';
-import 'package:book_ogabek/src/ui/widget/product_widget.dart';
 import 'package:book_ogabek/src/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -55,8 +54,8 @@ class _NewsScreenState extends State<NewsScreen> {
                     ),
                   ),
                   SizedBox(width: 16 * w),
-                  Expanded(
-                    child: const BookWidget(
+                  const Expanded(
+                    child: BookWidget(
                       name: "НИ СЫ. Будь уверен в своих силах и не позв...",
                       image: "assets/images/book.png",
                     ),
